@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: team-task-board-backend
+    env: docker
+    region: oregon
+    plan: free
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: DATABASE_URL
+        value: your-mysql-connection-string
