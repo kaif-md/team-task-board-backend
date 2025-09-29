@@ -13,7 +13,10 @@ public class WebConfig {
             @Override
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
-                        .allowedOrigins("http://localhost:5173") // React default port (Vite)
+                        .allowedOrigins(
+                                "https://team-task-board-amber.vercel.app", // your Vercel frontend
+                                "http://localhost:5173"                    // local dev (optional)
+                        )
                         .allowedMethods("GET", "POST", "PUT", "DELETE")
                         .allowedHeaders("*");
             }
