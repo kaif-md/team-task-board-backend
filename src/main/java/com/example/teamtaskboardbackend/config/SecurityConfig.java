@@ -11,16 +11,18 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .csrf(csrf -> csrf.disable()) // disable CSRF for APIs
+                .csrf(csrf -> csrf.disable())
+                .cors(cors -> {}) // 👈 This tells Spring Security to use your WebMvcConfigurer CORS rules
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/auth/**").permitAll()
                         .requestMatchers("/tasks/**").permitAll()
-                        .requestMatchers("/comments/**").permitAll()   // 👈 allow comments without auth for now
+                        .requestMatchers("/comments/**").permitAll()
                         .anyRequest().authenticated()
                 );
 
         return http.build();
     }
+
 }
 
 
